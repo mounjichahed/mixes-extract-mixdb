@@ -3,7 +3,7 @@
 
 ## Introduction
 
-The `final_extractor.py` script is designed to extract mix information based on an artist's name from the MixesDB website. Optionally, users can also specify a mix number to further narrow down the results.
+The `mixesdb_extractor.py` script is designed to extract mix information based on an artist's name from the MixesDB website. Optionally, users can also specify a mix number to further narrow down the results.
 
 ## Requirements
 
@@ -25,7 +25,7 @@ pip install requests beautifulsoup4 urllib3
 To use the script, navigate to its directory and run:
 
 ```bash
-python final_extractor.py "Artist Name" --mix_number 123
+python mixesdb_extractor.py "Artist Name" --mix_number 123
 ```
 
 Replace "Artist Name" with the desired artist's name and `123` with the desired mix number (if any).
