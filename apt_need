@@ -1,0 +1,4 @@
+sudo apt install libsecret-1-dev
+sudo apt install npm
+sudo npm install -g soulseek-cli
+sudo apt install gnome-keyring --no-install-recommends
