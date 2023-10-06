@@ -13,8 +13,8 @@ headers = {
 
 MAIN = "https://www.mixesdb.com"
 SRCH = "/w/Category:"
-ARTS = "Motor_City_Drum_Ensemble"
-#ARTS = "Laurent_Garnier"
+#ARTS = "Motor_City_Drum_Ensemble"
+ARTS = "Laurent_Garnier"
 
 
 def extract_mixes_from_url(URL):
