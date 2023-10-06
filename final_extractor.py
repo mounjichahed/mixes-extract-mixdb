@@ -4,6 +4,7 @@ import requests
 import re
 from bs4 import BeautifulSoup
 import urllib3
+import argparse
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -13,9 +14,6 @@ headers = {
 
 MAIN = "https://www.mixesdb.com"
 SRCH = "/w/Category:"
-#ARTS = "Motor_City_Drum_Ensemble"
-ARTS = "Laurent_Garnier"
-
 
 def extract_mixes_from_url(URL):
     
@@ -80,23 +78,47 @@ def clean_track(track):
         return dtrack
     except:
         pass
-    
-
 
 if __name__ == "__main__":
+    # Create an ArgumentParser object
+    parser = argparse.ArgumentParser(description="Extract mixes based on artist's name and mix number.")
+
+    # Add arguments
+    parser.add_argument("artist_name", type=str, help="Name of the artist.")
+    parser.add_argument("--mix_number", type=int, default=None, help="Optional mix number.")
+
+    # Parse the arguments
+    args = parser.parse_args()
+
+    # Use the parsed arguments
+    ARTS = args.artist_name.replace(' ', '_')  # Replacing spaces with underscores
+    mix_number = args.mix_number  # This will be used later if the script needs it
+
     ltrack=[]
     URLMIX = MAIN + SRCH + ARTS
     mixes = extract_mixes_from_url(URLMIX)
 
-    URLTRACK = MAIN + mixes[5]
-    print(URLTRACK)
-    tracks = extract_tracks_from_url(URLTRACK)
-    for track in tracks:
-        t= clean_track(track)
-        if t:
-            ltrack.append(clean_track(track))
-    print(ltrack)
-
+    if mix_number:
+        URLTRACK = MAIN + mixes[mix_number]
+        tracks = extract_tracks_from_url(URLTRACK)
+        for track in tracks:
+            t= clean_track(track)
+            if t:
+                ltrack.append(clean_track(track))
+        print(ltrack)
+    else:
+        for mix in mixes:
+            print()
+            print()
+            print("******")
+            print(mix)
+            URLTRACK = MAIN + mix
+            tracks = extract_tracks_from_url(URLTRACK)
+            for track in tracks:
+                t= clean_track(track)
+                if t:
+                    ltrack.append(clean_track(track))
+            print(ltrack)
 
 
         
