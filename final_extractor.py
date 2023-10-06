@@ -108,17 +108,20 @@ if __name__ == "__main__":
         print(ltrack)
     else:
         for mix in mixes:
-            print()
-            print()
-            print("******")
-            print(mix)
-            URLTRACK = MAIN + mix
-            tracks = extract_tracks_from_url(URLTRACK)
-            for track in tracks:
-                t= clean_track(track)
-                if t:
-                    ltrack.append(clean_track(track))
-            print(ltrack)
+            try:
+                print()
+                print()
+                print("******")
+                print(mix)
+                URLTRACK = MAIN + mix
+                tracks = extract_tracks_from_url(URLTRACK)
+                for track in tracks:
+                    t= clean_track(track)
+                    if t:
+                        ltrack.append(clean_track(track))
+                print(ltrack)
+            except:
+                pass
 
 
         
