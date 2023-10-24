@@ -63,11 +63,11 @@ def extract_tracks_from_url(URL):
 
 def clean_track(track):
     gtrack=""
-    dtrack={}
+    dtrack={} 
     if ('[' in track):
         if (']' in track):
             track = track.split(']')[1]
-            if (']' in track):
+            if ('[' in track):
                 track = track.split('[')[0]
                 if ("?" not in track and not track.isalpha()):
                     gtrack = track
