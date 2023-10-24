@@ -79,21 +79,8 @@ def clean_track(track):
     except:
         pass
 
-if __name__ == "__main__":
-    # Create an ArgumentParser object
-    parser = argparse.ArgumentParser(description="Extract mixes based on artist's name and mix number.")
-
-    # Add arguments
-    parser.add_argument("artist_name", type=str, help="Name of the artist.")
-    parser.add_argument("--mix_number", type=int, default=None, help="Optional mix number.")
-
-    # Parse the arguments
-    args = parser.parse_args()
-
-    # Use the parsed arguments
-    ARTS = args.artist_name.replace(' ', '_')  # Replacing spaces with underscores
-    mix_number = args.mix_number  # This will be used later if the script needs it
-
+def get_list(ARTS,mix_number=""):
+    ARTS = ARTS.replace(' ', '_')
     ltrack=[]
     URLMIX = MAIN + SRCH + ARTS
     mixes = extract_mixes_from_url(URLMIX)
@@ -123,7 +110,19 @@ if __name__ == "__main__":
             except:
                 pass
 
+if __name__ == "__main__":
+    # Create an ArgumentParser object
+    parser = argparse.ArgumentParser(description="Extract mixes based on artist's name and mix number.")
 
-        
-        
+    # Add arguments
+    parser.add_argument("artist_name", type=str, help="Name of the artist.")
+    parser.add_argument("--mix_number", type=int, default=None, help="Optional mix number.")
 
+    # Parse the arguments
+    args = parser.parse_args()
+
+    # Use the parsed arguments
+    ARTS = args.artist_name  # Replacing spaces with underscores
+    mix_number = args.mix_number  # This will be used later if the script needs it
+
+    get_list(ARTS,mix_number)
