@@ -92,7 +92,7 @@ def get_list(ARTS,mix_number=""):
             t= clean_track(track)
             if t:
                 ltrack.append(clean_track(track))
-        print(ltrack)
+        return(ltrack)
     else:
         for mix in mixes:
             try:
@@ -106,7 +106,7 @@ def get_list(ARTS,mix_number=""):
                     t= clean_track(track)
                     if t:
                         ltrack.append(clean_track(track))
-                print(ltrack)
+                return(ltrack)
             except:
                 pass
 
