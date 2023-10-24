@@ -67,8 +67,10 @@ def clean_track(track):
     if ('[' in track):
         if (']' in track):
             track = track.split(']')[1]
-            if ("?" not in track and not track.isalpha()):
-                gtrack = track
+            if (']' in track):
+                track = track.split('[')[0]
+                if ("?" not in track and not track.isalpha()):
+                    gtrack = track
         
     else : gtrack = track
     dtrack={}
@@ -96,10 +98,6 @@ def get_list(ARTS,mix_number=""):
     else:
         for mix in mixes:
             try:
-                print()
-                print()
-                print("******")
-                print(mix)
                 URLTRACK = MAIN + mix
                 tracks = extract_tracks_from_url(URLTRACK)
                 for track in tracks:
