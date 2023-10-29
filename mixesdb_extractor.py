@@ -123,4 +123,5 @@ if __name__ == "__main__":
     ARTS = args.artist_name  # Replacing spaces with underscores
     mix_number = args.mix_number  # This will be used later if the script needs it
 
-    get_list(ARTS,mix_number)
+    list_mix = get_list(ARTS,mix_number)
+    print(list_mix)
